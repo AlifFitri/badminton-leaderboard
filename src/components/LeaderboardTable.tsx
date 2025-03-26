@@ -125,8 +125,8 @@ const LeaderboardTable: React.FC<LeaderboardTableProps> = ({ initialPlayers }) =
       <tbody>
         {/* Map through ranked players to create table rows */}
         {rankedPlayers.map((player) => (
-          <tr key={player.name}> {/* Use name as unique key */}
-            <td><RankDisplay rank={player.rank} /></td> {/* Use RankDisplay component */}
+          <tr key={player.name}>
+            <td><RankDisplay rank={player.rank} /></td>
             <td>{player.name}</td>
             <td>{player.wins}</td>
             <td>{player.losses}</td>
