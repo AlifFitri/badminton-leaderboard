@@ -182,3 +182,28 @@ td:nth-child(2) { /* Name */
 
   /* Consider further adjustments for very small screens */
 }
+
+/* Styles for Rank Cell and Medal Icons */
+.rank-cell {
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Vertically center items */
+  justify-content: center; /* Horizontally center items */
+  gap: 0.3em; /* Add a small gap between icon and number */
+}
+
+.medal-icon {
+  font-size: 1.2em; /* Adjust icon size relative to text */
+  vertical-align: middle; /* Align icon nicely with text */
+}
+
+.medal-gold {
+  color: #ffd700; /* Gold */
+}
+
+.medal-silver {
+  color: #c0c0c0; /* Silver */
+}
+
+.medal-bronze {
+  color: #cd7f32; /* Bronze */
+}

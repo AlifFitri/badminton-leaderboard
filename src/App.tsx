@@ -1,5 +1,6 @@
 import './App.css';
 import { useState, useMemo } from 'react'; // Import useState and useMemo
+import { FaMedal } from 'react-icons/fa'; // Import the medal icon
 
 // Define the type for base player data
 interface PlayerData {
@@ -43,6 +44,22 @@ interface SortConfig {
 const calculateWinPercentage = (wins: number, matchesPlayed: number): number => {
   return matchesPlayed > 0 ? Math.round((wins / matchesPlayed) * 100) : 0;
 };
+
+// Component to display rank with medal icons for top 3
+function RankDisplay({ rank }: { rank: number }) {
+  // Render FaMedal icon with specific class for color based on rank
+  if (rank === 1) {
+    return <span className="rank-cell"><FaMedal className="medal-icon medal-gold" /> {rank}</span>;
+  }
+  if (rank === 2) {
+    return <span className="rank-cell"><FaMedal className="medal-icon medal-silver" /> {rank}</span>;
+  }
+  if (rank === 3) {
+    return <span className="rank-cell"><FaMedal className="medal-icon medal-bronze" /> {rank}</span>;
+  }
+  // Return just the rank number for others
+  return <span className="rank-cell">{rank}</span>;
+}
 
 function LeaderboardTable({ initialPlayers }: { initialPlayers: PlayerData[] }) {
   const [sortConfig, setSortConfig] = useState<SortConfig>({ key: 'winPercentage', direction: 'desc' }); // Default sort
@@ -115,7 +132,7 @@ function LeaderboardTable({ initialPlayers }: { initialPlayers: PlayerData[] }) 
       <tbody>
         {rankedPlayers.map((player) => (
           <tr key={player.name}> {/* Use name as unique key */}
-            <td>{player.rank}</td>
+            <td><RankDisplay rank={player.rank} /></td> {/* Use RankDisplay component */}
             <td>{player.name}</td>
             <td>{player.wins}</td>
             <td>{player.losses}</td>
