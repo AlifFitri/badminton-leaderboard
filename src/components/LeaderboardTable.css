@@ -1,0 +1,124 @@
+/* src/components/LeaderboardTable.css */
+
+/* Leaderboard Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background-color: var(--secondary-color); /* Assuming --secondary-color is globally defined or defined here */
+  border-radius: 8px;
+  overflow: hidden; /* Ensures border-radius applies to table */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color); /* Assuming --border-color is globally defined or defined here */
+}
+
+th {
+  background-color: var(--table-header-bg); /* Assuming --table-header-bg is globally defined or defined here */
+  color: var(--primary-color); /* Assuming --primary-color is globally defined or defined here */
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+/* Style for sortable headers */
+th.sortable {
+  cursor: pointer;
+  position: relative; /* Needed for absolute positioning of indicator */
+  padding-right: 12px; /* Further reduce space for indicator */
+}
+
+/* Sort indicators */
+th.sortable::after {
+  content: '';
+  position: absolute;
+  right: 4.3rem;
+  top: 50%;
+  margin-top: -6px; /* Center vertically */
+  border: 4px solid transparent;
+  opacity: 0.4; /* Dim by default */
+}
+
+th.sortable.sort-asc::after {
+  border-bottom-color: var(--primary-color); /* Assuming --primary-color is globally defined or defined here */
+  margin-top: -8px; /* Adjust position for upward arrow */
+  opacity: 1;
+  right: 4.3rem;
+}
+
+th.sortable.sort-desc::after {
+  border-top-color: var(--primary-color); /* Assuming --primary-color is globally defined or defined here */
+  margin-top: -2px; /* Adjust position for downward arrow */
+  opacity: 1;
+  right: 4.3rem; /* Position active arrow close to text */
+}
+
+
+tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+tbody tr:hover {
+  background-color: var(--table-row-hover-bg); /* Assuming --table-row-hover-bg is globally defined or defined here */
+}
+
+tbody tr:last-child td {
+  border-bottom: none; /* Remove border for the last row */
+}
+
+td:first-child { /* Rank */
+  font-weight: bold;
+  color: var(--primary-color); /* Assuming --primary-color is globally defined or defined here */
+  text-align: center;
+  width: 5%;
+}
+
+td:nth-child(2) { /* Name */
+  font-weight: 500;
+}
+
+/* Styles for Rank Cell and Medal Icons */
+.rank-cell {
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Vertically center items */
+  justify-content: center; /* Horizontally center items */
+  gap: 0.3em; /* Add a small gap between icon and number */
+}
+
+.medal-icon {
+  font-size: 1.2em; /* Adjust icon size relative to text */
+  vertical-align: middle; /* Align icon nicely with text */
+}
+
+.medal-gold {
+  color: #ffd700; /* Gold */
+}
+
+.medal-silver {
+  color: #c0c0c0; /* Silver */
+}
+
+.medal-bronze {
+  color: #cd7f32; /* Bronze */
+}
+
+/* Responsive Design Adjustments for Table */
+/* Note: These might need adjustments if they conflict with global responsive styles */
+@media (max-width: 768px) {
+  th, td {
+    padding: 10px 8px;
+    font-size: 0.9rem;
+  }
+  /* If specific column hiding was intended for the table, move it here */
+}
+
+@media (max-width: 480px) {
+  th, td {
+    padding: 8px 5px;
+    font-size: 0.8rem;
+  }
+}
